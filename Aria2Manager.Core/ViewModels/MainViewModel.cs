@@ -134,6 +134,7 @@ namespace Aria2Manager.Core.ViewModels
             {
                 OnPropertyChanged(nameof(ServerStatus));
                 CurrentServerName = GlobalContext.Instance.ServerSettings.Current;
+                NetSpeedLineDatas.Clear();
             };
             _ = LoadSpeedLimits();
         }
