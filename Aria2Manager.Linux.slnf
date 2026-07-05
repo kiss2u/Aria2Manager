@@ -1,0 +1,9 @@
+{
+    "solution": {
+        "path": "Aria2Manager.sln",
+        "projects": [
+            "Aria2Manager.Core\\Aria2Manager.Core.csproj",
+            "Aria2Manager.Avalonia\\Aria2Manager.Avalonia.csproj"
+        ]
+    }
+}

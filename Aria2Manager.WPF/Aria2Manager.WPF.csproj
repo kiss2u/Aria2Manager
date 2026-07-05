@@ -8,7 +8,8 @@
     <ApplicationIcon>Resources\app.ico</ApplicationIcon>
     <Product>Aria2Manager</Product>
     <AssemblyTitle>Aria2Manager</AssemblyTitle>
-	<AssemblyName>Aria2Manager</AssemblyName>
+	  <AssemblyName>Aria2Manager</AssemblyName>
+    <EnableWindowsTargeting Condition="'$(OS)' != 'Windows_NT'">true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <ItemGroup>
