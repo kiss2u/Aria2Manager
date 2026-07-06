@@ -44,9 +44,28 @@ namespace Aria2Manager.Avalonia
             {
                 //桌面环境
                 desktop.Exit += OnExit;
+                desktop.ShutdownRequested += Desktop_ShutdownRequested;
                 _uiService.ShowWindow(WindowType.MainWindow, new MainViewModel(_uiService));
             }
             base.OnFrameworkInitializationCompleted();
+        }
+        private void Desktop_ShutdownRequested(object? sender, ShutdownRequestedEventArgs e)
+        {
+            try
+            {
+                Task.Run(async () =>
+                {
+                    await Aria2ProcessHelper.KillAria2Process();
+                }).Wait(TimeSpan.FromSeconds(3));
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Failed to stop aria2 during shutdown", ex, false);
+            }
+            finally
+            {
+                Environment.Exit(0);
+            }
         }
         private void InitLogger()
         {
